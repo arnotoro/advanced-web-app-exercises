@@ -1,5 +1,3 @@
-import "./styles.css";
-
 if (document.readyState !== "loading") {
   initializeCode();
 } else {
@@ -22,8 +20,8 @@ async function initializeCode() {
   const summaryJSON = await dogSummary.json();
 
   //create html instruments
-  //const divContainer = document.body.appendChild(document.createElement('div'))
-  const newDiv = document.body.appendChild(document.createElement("div"));
+  const divContainer = document.getElementById('div-1')
+  const newDiv = divContainer.appendChild(document.createElement("div"));
   const newHeader1 = newDiv.appendChild(document.createElement("h1"));
   const newHeaderText = document.createTextNode("Westhighland Terrier");
   const newContentDiv = newDiv.appendChild(document.createElement("div"));
