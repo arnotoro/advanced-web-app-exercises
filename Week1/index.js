@@ -22,7 +22,7 @@ async function initializeCode() {
   const summaryJSON = await dogSummary.json();
 
   //create html instruments
-  const divContainer = document.body.appendChild(document.createElement('div'))
+  //const divContainer = document.body.appendChild(document.createElement('div'))
   const newDiv = document.body.appendChild(document.createElement("div"));
   const newHeader1 = newDiv.appendChild(document.createElement("h1"));
   const newHeaderText = document.createTextNode("Westhighland Terrier");
@@ -33,7 +33,7 @@ async function initializeCode() {
   const newImg = newImgDiv.appendChild(document.createElement("img"));
 
   // container div
-  divContainer.setAttribute('class', 'container')
+  //divContainer.setAttribute('class', 'container')
 
   // first div
   newDiv.setAttribute("class", "wiki-item");
