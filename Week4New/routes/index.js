@@ -1,8 +1,5 @@
 var express = require('express');
-var fetch = require('node-fetch')
-const { response } = require('../app');
 var router = express.Router();
-const bodypareser = require('body-parser');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,22 +15,6 @@ router.get('/', function(req, res, next) {
       instructions: json.instructions,
       ingredients: json.ingredients})
   })
-})
-
-function addIngredient(){
-  console.log('add ingredient')
-
-}
-
-
-
-
-
-
-router.post('/recipe/', function(req, res, next) {
-  
-  
-  
 })
 
 module.exports = router;

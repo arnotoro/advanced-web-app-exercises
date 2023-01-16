@@ -10,13 +10,14 @@ block recipe
     for i in instructions 
       li= i
 
-//- block input-recipe 
-//-   h2 Input new recipe:
-//-   input(type='text', id='name-text')
-//-   h4 Ingredients
-//-   textarea(id='ingredients-text')
-//-   button(id="add-ingredient", type="button") Add ingredient
-//-   h4 Instructions
-//-   textarea(id="instructions-text")
-//-   button(id="add-instruction", type="button") Add instruction
-//-   button(id="submit", type="submit") Submit
+block input-recipe
+  form(action="/recipe/", method="post")
+    h2 Input new recipe:
+    input(type='text', id='name-text')
+    h4 Ingredients
+    textarea(id='ingredients-text')
+    button(id="add-ingredient", type="button" onlick="addIngredient()") Add ingredient
+    h4 Instructions
+    textarea(id="instructions-text")
+    button(id="add-instruction", type="submit" formmethod = "get" formaction="/recipe/pizza") Add instruction
+    button(id="submit", type="submit") Submit
