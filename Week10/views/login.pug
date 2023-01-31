@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+
+  form(action='' id='login-form' method='POST')
+    label(for='email')
+      b   Email   
+    input(type='email' name='email' id='email' placeholder='Enter email' required)
+
+    label(for='password')
+      b   Password  
+    input(type='password' name='password' id='password' placeholder='Enter password' required)
+    |   
+    button(class='btn' type='submit') Login
+  script(src='/javascripts/login.js')
