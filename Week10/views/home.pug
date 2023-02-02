@@ -3,4 +3,10 @@ extends layout
 block content
     h1= title
     p Welcome #{email}
-    button(id='logout') Logout
+    ul(id='todo-list')
+    input(type='text', id='add-item', placeholder='Add item to todo list')
+    |
+    br
+    |   
+    br
+    input(type='submit', id='logout', value='Logout')

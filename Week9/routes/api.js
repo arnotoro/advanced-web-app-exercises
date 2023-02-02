@@ -114,7 +114,6 @@ router.get('/private', passport.authenticate('jwt', {session: false}), (req, res
 
 // route for todos list
 router.post('/todos', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-
   Todos.findOne({user: req.user._id}, (err, todos) => {
     if (err) {
       console.log(err)
@@ -132,6 +131,7 @@ router.post('/todos', passport.authenticate('jwt', {session: false}), (req, res,
         }
       })
     } else {
+      console.log(req.body.items, req.user._id)
       const newTodos = new Todos({
         user: req.user._id,
         items: []

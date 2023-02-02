@@ -60,7 +60,7 @@ router.post('/user/register',
     // check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log(req.body)
+      //console.log(req.body)
       return res.status(400).json({errors: errors.array()});
     }
 
@@ -120,12 +120,13 @@ router.get('/private', passport.authenticate('jwt', {session: false}), (req, res
 
 // route for todos list
 router.post('/todos', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-
+  console.log(req.body, req.user._id);
   Todos.findOne({user: req.user._id}, (err, todos) => {
     if (err) {
       console.log(err)
       return next(err);
     } else if (todos) {
+      // todos.items.push(req.body.items);
       req.body.items.forEach(element => {
         todos.items.push(element)
       });
@@ -142,6 +143,7 @@ router.post('/todos', passport.authenticate('jwt', {session: false}), (req, res,
         user: req.user._id,
         items: []
       });
+      // newTodos.items.push(req.body.items)
       req.body.items.forEach(element => {
         newTodos.items.push(element)
       });
@@ -153,6 +155,19 @@ router.post('/todos', passport.authenticate('jwt', {session: false}), (req, res,
             res.status(200).json({success: true, todos: todos});
         }
       })
+    }
+  })
+})
+
+router.get('/todos', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+  Todos.findOne({user: req.user._id}, (err, todos) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else if (todos) {
+      res.status(200).json({success: true, todos: todos});
+    } else {
+      res.status(404).json({success: false, todos: "No todos found."});
     }
   })
 })
