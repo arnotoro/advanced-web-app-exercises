@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import SubmitBooks from './components/SubmitBooks';
+import Book from './components/Book';
+import Header from './components/Header';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/book/:name" element={<> <Header /> <Book /></>} />
+        <Route path="/" element={<> <Header /> <SubmitBooks /> </>} />
+        <Route path="*" element={<> <Header /> <h1 style={{textAlign: 'center'}}>404: This is not the webpage you are looking for</h1> </>} />
+      </Routes>
+    </Router>
   );
 }
 
